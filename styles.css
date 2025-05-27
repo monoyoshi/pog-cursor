@@ -1,0 +1,116 @@
+:root {
+    --cursor_sizeClick: 180px;
+    --cursor_sizeClickLink: 225px;
+    --cursor_sizeDust: 12px;
+    --cursor_trailColor: #eaf3fc;
+}
+
+#asset_cursor {
+    z-index: 99;
+    pointer-events: none;
+}
+
+.cursor_dragtrail,
+.cursor_dragdust,
+#cursor_drag,
+#cursor_click {
+    position: fixed;
+}
+
+#cursor_click {
+    background-size: cover;
+    animation-duration: 200ms;
+}
+
+#cursor_click.ed {
+    width: var(--cursor_sizeClick);
+    height: var(--cursor_sizeClick);
+    animation-name: cursor_click;
+}
+
+#cursor_click.edlink {
+    width: var(--cursor_sizeClickLink);
+    height: var(--cursor_sizeClickLink);
+    animation-name: cursor_clicklink;
+}
+
+.cursor_dragtrail,
+.cursor_dragdust {
+    border-radius: var(--cursor_sizeDust);
+    background-color: var(--cursor_trailColor);
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+}
+
+.cursor_dragtrail {
+    animation-name: cursor_trail;
+}
+
+.cursor_dragdust {
+    animation-name: cursor_sprinkle;
+}
+
+/* regular click */
+@keyframes cursor_click {
+    0% {
+        background-image: url("assets/0.svg");
+    }
+    20% {
+        background-image: url("assets/1.svg");
+    }
+    40% {
+        background-image: url("assets/2.svg");
+    }
+    60% {
+        background-image: url("assets/3.svg");
+    }
+    80% {
+        background-image: url("assets/4.svg");
+    }
+    100% {
+        background-image: url("assets/5.svg");
+    }
+}
+
+/* basically a flashier animation if an interactable object (link, button) is being pressed */
+@keyframes cursor_clicklink {
+    0% {
+        background-image: url("assets/0.svg");
+    }
+    20% {
+        background-image: url("assets/1.svg");
+    }
+    40% {
+        background-image: url("assets/2.svg");
+    }
+    60% {
+        background-image: url("assets/3.svg");
+    }
+    80% {
+        background-image: url("assets/4.svg");
+    }
+    100% {
+        background-image: url("assets/5.svg");
+    }
+}
+
+/* cursor trail */
+@keyframes cursor_trail {
+    0% {
+        width: var(--cursor_sizeDust);
+        height: var(--cursor_sizeDust);
+    }
+    100% {
+        width: 0px;
+        height: 0px;
+    }
+}
+
+/* cursor dust */
+@keyframes cursor_sprinkle {
+    100% {
+        opacity: 0;
+        width: 0px;
+        height: 0px;
+    }
+}
